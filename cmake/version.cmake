@@ -11,7 +11,7 @@ if (NOT FULL_VERSION_STRING)
 
     if (GIT_DESCRIBE_RESULT EQUAL 0)
         string(REGEX REPLACE "v([0-9]*)\\.([0-9]*)\\.(.*)" "\\1.\\2.\\3" FULL_VERSION_STRING ${GIT_DESCRIBE_VERSION})
-        file(WRITE ${CMAKE_BINARY_DIR}/VERSION ${GIT_DESCRIBE_VERSION})
+        file(WRITE ${CMAKE_BINARY_DIR}/VERSION ${FULL_VERSION_STRING})
     else ()
         message(FATAL_ERROR "failed to generate version from git describe: ${GIT_DESCRIBE_ERROR}")
     endif ()
