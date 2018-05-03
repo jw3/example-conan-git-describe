@@ -8,6 +8,12 @@ how can this process be integrated with conan to dynamically specify the version
 ### steps
 - add conanfile; `conan new git-example/0.1`
 - modify conanfile; ...
+- run cmake which generates the version string
+- export package; `conan export-pkg . foo/bar -f`
+
+If the cmake build dir is not `build` then specify it with environment
+
+`BUILD_DIR=cmake-build-debug conan export-pkg . ......`
 
 ### references
 - https://github.com/conan-io/conan/issues/548
