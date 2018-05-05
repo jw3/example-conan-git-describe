@@ -3,15 +3,16 @@ import os
 
 build_dir = os.getenv("BUILD_DIR", "build")
 
-def parse_version():
-    conan_version = os.getenv("PLUGIN_VERSION", "snapshot")
-    if os.path.exists(build_dir + "/VERSION"):
-        conan_version = tools.load(build_dir + "/VERSION")
-    return conan_version
+def lookup(name, default = None):
+    v = default
+    if os.path.exists(build_dir + "/" + name):
+        v = tools.load(build_dir + "/" + name)
+    return os.getenv("CONAN_" + name, v)
+
 
 class GitexampleConan(ConanFile):
-    name = "git-example"
-    version = parse_version()
+    name = lookup("NAME")
+    version = lookup("VERSION", "snapshot")
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Gitexample here>"

@@ -15,5 +15,9 @@ If the cmake build dir is not `build` then specify it with environment
 
 `BUILD_DIR=cmake-build-debug conan export-pkg . ......`
 
+Override the CMake derived settings with environment
+- `CONAN_NAME` - package name
+- `CONAN_VERSION` - package version
+
 ### references
 - https://github.com/conan-io/conan/issues/548
