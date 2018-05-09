@@ -2,8 +2,15 @@ cmake_minimum_required(VERSION 3.10)
 project(example_conan_git_describe)
 
 set(CMAKE_CXX_STANDARD 11)
-
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+
+include(version)
+file(WRITE ${CMAKE_BINARY_DIR}/NAME ${CMAKE_PROJECT_NAME})
+
+option(METADATA_ONLY "Write project metadata and exit" OFF)
+if (METADATA_ONLY)
+    return()
+endif ()
 
 if (EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)

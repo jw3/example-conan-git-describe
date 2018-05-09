@@ -12,12 +12,12 @@ mkdir build
 
 if [[ "$1" == "fix" ]]; then fix; fi
 
-conan install . -if build
 cd build
+cmake .. -DMETADATA_ONLY=ON
+conan install .. -if build
 cmake ..
 make
-cd -
 
 if [[ "$1" == "fix" ]]; then fix; fi
 
-conan export-pkg . foo/bar -f
+conan export-pkg .. foo/bar -f
