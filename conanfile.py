@@ -11,7 +11,7 @@ def lookup(name, default = None):
 
 
 class GitexampleConan(ConanFile):
-    name = lookup("NAME")
+    name = lookup("NAME") + "_append_or_fail"
     version = lookup("VERSION", "snapshot")
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
@@ -20,6 +20,7 @@ class GitexampleConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
+    exports = "*"
     requires = "range-v3/0.3.0@ericniebler/stable"
 
     def package(self):
