@@ -20,6 +20,7 @@ class GitexampleConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
+    requires = "range-v3/0.3.0@ericniebler/stable"
 
     def package(self):
         self.copy("*.h", dst="include", src="hello")

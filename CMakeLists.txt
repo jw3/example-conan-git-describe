@@ -14,6 +14,7 @@ endif()
 
 include(version)
 
-add_library(example_conan_git_describe library.cpp library.h)
+add_library(example_conan_git_describe STATIC library.cpp library.h)
+target_include_directories(example_conan_git_describe PRIVATE ${CONAN_INCLUDE_DIRS})
 
 file(WRITE ${CMAKE_BINARY_DIR}/NAME ${CMAKE_PROJECT_NAME})
